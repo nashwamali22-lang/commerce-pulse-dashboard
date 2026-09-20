@@ -1,20 +1,20 @@
 import {
+  browserLocalPersistence,
+  setPersistence,
   signInWithEmailAndPassword,
   signOut,
   type User,
-} from "firebase/auth";
+} from 'firebase/auth';
 
-import { auth } from "./config";
+import { auth } from './config';
 
 export async function loginWithEmail(
   email: string,
-  password: string
+  password: string,
 ): Promise<User> {
-  const credential = await signInWithEmailAndPassword(
-    auth,
-    email,
-    password
-  );
+  await setPersistence(auth, browserLocalPersistence);
+
+  const credential = await signInWithEmailAndPassword(auth, email, password);
 
   return credential.user;
 }
