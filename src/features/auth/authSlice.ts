@@ -19,8 +19,14 @@ const authSlice = createSlice({
 
     setUser(state, action: PayloadAction<AuthUser | null>) {
       state.user = action.payload;
+      state.loading = false;
       state.initialized = true;
       state.error = null;
+    },
+
+    setAuthInitialized(state) {
+      state.initialized = true;
+      state.loading = false;
     },
 
     setAuthError(state, action: PayloadAction<string | null>) {
@@ -44,6 +50,7 @@ const authSlice = createSlice({
 export const {
   setAuthLoading,
   setUser,
+  setAuthInitialized,
   setAuthError,
   clearAuthError,
   resetAuth,
