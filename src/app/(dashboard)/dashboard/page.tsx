@@ -82,19 +82,11 @@ export default function DashboardPage() {
   return (
     <main className="min-h-dvh bg-[#07111f] text-white">
       <div className="flex min-h-dvh">
-        {/* Sidebar */}
-
         <DashboardSidebar email={user?.email} />
 
-        {/* Main content */}
-
-        <section className="min-w-0 flex-1 px-4 py-5 sm:px-6 lg:px-8">
+        <section className="min-w-0 flex-1 px-4 pb-5 pt-20 sm:px-6 lg:px-8 lg:py-5">
           <div className="mx-auto w-full max-w-[1600px]">
-            {/* Header */}
-
             <DashboardHeader email={user?.email} />
-
-            {/* Error */}
 
             {error && (
               <div
@@ -124,8 +116,6 @@ export default function DashboardPage() {
               <DashboardSkeleton />
             ) : (
               <>
-                {/* KPI cards */}
-
                 <section
                   aria-label="Dashboard metrics"
                   className="grid grid-cols-2 gap-3 lg:grid-cols-3 2xl:grid-cols-6"
@@ -173,15 +163,11 @@ export default function DashboardPage() {
                   />
                 </section>
 
-                {/* Main charts */}
-
                 <section className="mt-5 grid grid-cols-1 gap-5 xl:grid-cols-2">
                   <RevenueOverviewChart data={revenueData} />
 
                   <SalesByProductChart data={salesData} />
                 </section>
-
-                {/* Bottom analytics */}
 
                 <section className="mt-5 grid grid-cols-1 gap-5 xl:grid-cols-[0.85fr_1.4fr_0.85fr]">
                   <InventoryDistributionChart data={inventoryData} />
@@ -194,8 +180,6 @@ export default function DashboardPage() {
                     totalProfit={metrics.totalProfit}
                   />
                 </section>
-
-                {/* Footer status */}
 
                 <div className="mt-5 flex flex-col gap-2 rounded-xl border border-white/[0.05] bg-white/[0.015] px-4 py-3 text-[11px] text-slate-600 sm:flex-row sm:items-center sm:justify-between">
                   <span>
@@ -224,8 +208,6 @@ export default function DashboardPage() {
 function DashboardSkeleton() {
   return (
     <div aria-label="Loading dashboard" className="animate-pulse">
-      {/* KPI cards */}
-
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 2xl:grid-cols-6">
         {Array.from({
           length: 6,
@@ -237,8 +219,6 @@ function DashboardSkeleton() {
         ))}
       </div>
 
-      {/* Main charts */}
-
       <div className="mt-5 grid grid-cols-1 gap-5 xl:grid-cols-2">
         {Array.from({
           length: 2,
@@ -249,8 +229,6 @@ function DashboardSkeleton() {
           />
         ))}
       </div>
-
-      {/* Bottom analytics */}
 
       <div className="mt-5 grid grid-cols-1 gap-5 xl:grid-cols-[0.85fr_1.4fr_0.85fr]">
         {Array.from({

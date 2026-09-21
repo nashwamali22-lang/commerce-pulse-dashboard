@@ -1,8 +1,5 @@
 'use client';
 
-import Link from 'next/link';
-import { LayoutDashboard, Package } from 'lucide-react';
-
 type DashboardHeaderProps = {
   email?: string | null;
   displayName?: string | null;
@@ -15,31 +12,6 @@ export function DashboardHeader({ email, displayName }: DashboardHeaderProps) {
 
   return (
     <header className="mb-5">
-      <div className="mb-4 flex items-center justify-between lg:hidden">
-        <p className="text-lg font-bold text-white">
-          Stock
-          <span className="text-violet-400">Pro</span>
-        </p>
-
-        <nav className="flex gap-2">
-          <Link
-            href="/dashboard"
-            aria-label="Overview"
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.07] bg-[#0b1527] text-slate-300"
-          >
-            <LayoutDashboard className="h-4 w-4" />
-          </Link>
-
-          <Link
-            href="/products"
-            aria-label="Products"
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.07] bg-[#0b1527] text-slate-300"
-          >
-            <Package className="h-4 w-4" />
-          </Link>
-        </nav>
-      </div>
-
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold tracking-[-0.03em] text-white">

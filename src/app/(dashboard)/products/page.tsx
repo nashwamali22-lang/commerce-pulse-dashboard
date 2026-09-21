@@ -61,9 +61,6 @@ export default function ProductsPage() {
 
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
 
-  /*
-   * Initial loading
-   */
   useEffect(() => {
     if (requested.current) {
       return;
@@ -82,27 +79,18 @@ export default function ProductsPage() {
 
   const error = productsError ?? categoriesError;
 
-  /*
-   * Add Product
-   */
   function openAddModal() {
     setEditingProduct(null);
 
     setModalOpen(true);
   }
 
-  /*
-   * Edit Product
-   */
   function openEditModal(product: Product) {
     setEditingProduct(product);
 
     setModalOpen(true);
   }
 
-  /*
-   * Close modal
-   */
   function closeModal() {
     if (mutationLoading) {
       return;
@@ -113,13 +101,7 @@ export default function ProductsPage() {
     setEditingProduct(null);
   }
 
-  /*
-   * Add / Edit submit
-   */
   async function handleSubmit(input: CreateProductInput) {
-    /*
-     * Edit existing product
-     */
     if (editingProduct) {
       const result = await dispatch(
         editProduct({
@@ -138,9 +120,6 @@ export default function ProductsPage() {
       return;
     }
 
-    /*
-     * Create new product
-     */
     const result = await dispatch(createProduct(input));
 
     if (createProduct.fulfilled.match(result)) {
@@ -150,9 +129,6 @@ export default function ProductsPage() {
     }
   }
 
-  /*
-   * Delete Product
-   */
   async function handleDelete(product: Product) {
     const confirmed = window.confirm(
       `Delete "${product.name}"?\n\nThis action cannot be undone.`,
@@ -165,32 +141,19 @@ export default function ProductsPage() {
     await dispatch(removeProduct(product.id));
   }
 
-  /*
-   * Manual refresh
-   */
   function handleRefresh() {
     void dispatch(fetchCategories());
 
     void dispatch(fetchProducts());
   }
 
-  /*
-   * Called after development
-   * catalog reset finishes.
-   */
-return (
+  return (
     <main className="min-h-dvh bg-[#07111f] text-white">
       <div className="flex min-h-dvh">
-        {/* Sidebar */}
-
         <DashboardSidebar email={user?.email} />
 
-        {/* Main content */}
-
-        <section className="min-w-0 flex-1 px-4 py-5 sm:px-6 lg:px-8">
+        <section className="min-w-0 flex-1 px-4 pb-5 pt-20 sm:px-6 lg:px-8 lg:py-5">
           <div className="mx-auto w-full max-w-[1600px]">
-            {/* Header */}
-
             <header className="mb-6 flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
               <div>
                 <h1 className="text-2xl font-bold tracking-[-0.03em] text-white">
@@ -203,14 +166,6 @@ return (
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
-                {/*
-                 * DEVELOPMENT ONLY.
-                 *
-                 * This component
-                 * already hides
-                 * itself in
-                 * production.
-                 */}
                 <button
                   type="button"
                   onClick={handleRefresh}
@@ -237,8 +192,6 @@ return (
               </div>
             </header>
 
-            {/* Errors */}
-
             {error && (
               <div
                 role="alert"
@@ -256,8 +209,6 @@ return (
               </div>
             )}
 
-            {/* Categories warning */}
-
             {categories.length === 0 &&
               !categoriesLoading &&
               !categoriesError && (
@@ -267,12 +218,11 @@ return (
                   </p>
 
                   <p className="mt-1 text-xs leading-5 text-amber-200/70">
-                    Products cannot be created until at least one category exists.
+                    Products cannot be created until at least one category
+                    exists.
                   </p>
                 </div>
               )}
-
-            {/* Content */}
 
             {loading ? (
               <ProductsSkeleton />
@@ -287,8 +237,6 @@ return (
           </div>
         </section>
       </div>
-
-      {/* Add / Edit Modal */}
 
       <ProductFormModal
         open={modalOpen}
@@ -305,11 +253,7 @@ return (
 function ProductsSkeleton() {
   return (
     <div aria-label="Loading products" className="animate-pulse">
-      {/* Search */}
-
       <div className="h-12 w-full max-w-xl rounded-xl bg-[#0b1527]" />
-
-      {/* Category filters */}
 
       <div className="mt-5">
         <div className="h-3 w-20 rounded bg-white/[0.05]" />
@@ -323,8 +267,6 @@ function ProductsSkeleton() {
         </div>
       </div>
 
-      {/* Stock filters */}
-
       <div className="mt-5">
         <div className="h-3 w-24 rounded bg-white/[0.05]" />
 
@@ -337,7 +279,7 @@ function ProductsSkeleton() {
         </div>
       </div>
 
-      {/* Summary */}
+      <div className="mt-5 h-[68px] rounded-xl border border-white/[0.05] bg-[#0b1527]" />
 
       <div className="mt-5 grid grid-cols-2 gap-3 xl:grid-cols-4">
         {Array.from({
@@ -349,8 +291,6 @@ function ProductsSkeleton() {
           />
         ))}
       </div>
-
-      {/* Table */}
 
       <div className="mt-5 overflow-hidden rounded-2xl border border-white/[0.06] bg-[#0b1527]">
         <div className="h-12 bg-white/[0.02]" />
@@ -364,4 +304,3 @@ function ProductsSkeleton() {
     </div>
   );
 }
-
