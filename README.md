@@ -1,4 +1,4 @@
-# StockPro — Commerce Pulse Dashboard
+﻿# StockPro â€” Commerce Pulse Dashboard
 
 A responsive product inventory and analytics dashboard built as part of a Frontend Internship technical assessment.
 
@@ -65,9 +65,9 @@ The products page includes:
 Stock states are calculated dynamically:
 
 ```text
-In Stock     → Available quantity > 10
-Low Stock    → Available quantity between 1 and 10
-Out of Stock → Available quantity = 0
+In Stock     â†’ Available quantity > 10
+Low Stock    â†’ Available quantity between 1 and 10
+Out of Stock â†’ Available quantity = 0
 ```
 
 Filters can be combined together.
@@ -115,19 +115,19 @@ The overview dashboard uses live Firestore product data to calculate:
 ### Revenue Calculation
 
 ```text
-Revenue = Product Price × Sold Quantity
+Revenue = Product Price Ã— Sold Quantity
 ```
 
 ### Profit Per Unit
 
 ```text
-Profit Per Unit = Product Price × Profit Percentage / 100
+Profit Per Unit = Product Price Ã— Profit Percentage / 100
 ```
 
 ### Total Product Profit
 
 ```text
-Product Profit = Profit Per Unit × Sold Quantity
+Product Profit = Profit Per Unit Ã— Sold Quantity
 ```
 
 The dashboard includes:
@@ -197,30 +197,30 @@ Charts are implemented with Recharts.
 
 ```text
 src/
-├── app/
-│   ├── (dashboard)/
-│   │   ├── dashboard/
-│   │   ├── products/
-│   │   └── layout.tsx
-│   ├── login/
-│   └── layout.tsx
-│
-├── components/
-│   ├── auth/
-│   ├── dashboard/
-│   └── products/
-│
-├── features/
-│   ├── auth/
-│   ├── categories/
-│   └── products/
-│
-├── lib/
-│   ├── exports/
-│   ├── firebase/
-│   └── products/
-│
-└── store/
+â”œâ”€â”€ app/
+â”‚   â”œâ”€â”€ (dashboard)/
+â”‚   â”‚   â”œâ”€â”€ dashboard/
+â”‚   â”‚   â”œâ”€â”€ products/
+â”‚   â”‚   â””â”€â”€ layout.tsx
+â”‚   â”œâ”€â”€ login/
+â”‚   â””â”€â”€ layout.tsx
+â”‚
+â”œâ”€â”€ components/
+â”‚   â”œâ”€â”€ auth/
+â”‚   â”œâ”€â”€ dashboard/
+â”‚   â””â”€â”€ products/
+â”‚
+â”œâ”€â”€ features/
+â”‚   â”œâ”€â”€ auth/
+â”‚   â”œâ”€â”€ categories/
+â”‚   â””â”€â”€ products/
+â”‚
+â”œâ”€â”€ lib/
+â”‚   â”œâ”€â”€ exports/
+â”‚   â”œâ”€â”€ firebase/
+â”‚   â””â”€â”€ products/
+â”‚
+â””â”€â”€ store/
 ```
 
 The application follows a feature-oriented structure to keep UI, Firebase services, Redux logic, selectors, and business calculations separated.
@@ -283,8 +283,8 @@ Enable:
 
 ```text
 Authentication
-→ Sign-in method
-→ Email/Password
+â†’ Sign-in method
+â†’ Email/Password
 ```
 
 Create at least one Firebase user for testing the login flow.
@@ -372,7 +372,7 @@ Recommended:
 Clone the repository:
 
 ```bash
-git clone <YOUR_GITHUB_REPOSITORY_URL>
+git clone https://github.com/nashwamali22-lang/commerce-pulse-dashboard.git
 ```
 
 Enter the project:
@@ -517,9 +517,9 @@ The Dockerfile uses a multi-stage build:
 
 ```text
 Dependencies
-    ↓
+    â†“
 Next.js Build
-    ↓
+    â†“
 Standalone Production Runtime
 ```
 
@@ -739,26 +739,27 @@ Add demo video URL here before submission.
 
 | Requirement | Implementation |
 |---|---|
-| React | ✅ |
-| Next.js | ✅ |
-| TypeScript | ✅ |
-| Tailwind CSS | ✅ |
-| Redux Toolkit | ✅ |
-| Authentication | ✅ Firebase Authentication |
-| Dynamic Data Table | ✅ |
-| Sorting | ✅ |
-| Filtering | ✅ |
-| Pagination | ✅ |
-| Charts | ✅ Recharts |
-| Mobile Responsive | ✅ |
-| PDF Export | ✅ |
-| Excel Export | ✅ |
-| Docker | ✅ |
-| Git Flow | ✅ |
-| README | ✅ |
+| React | âœ… |
+| Next.js | âœ… |
+| TypeScript | âœ… |
+| Tailwind CSS | âœ… |
+| Redux Toolkit | âœ… |
+| Authentication | âœ… Firebase Authentication |
+| Dynamic Data Table | âœ… |
+| Sorting | âœ… |
+| Filtering | âœ… |
+| Pagination | âœ… |
+| Charts | âœ… Recharts |
+| Mobile Responsive | âœ… |
+| PDF Export | âœ… |
+| Excel Export | âœ… |
+| Docker | âœ… |
+| Git Flow | âœ… |
+| README | âœ… |
 
 ---
 
 ## Author
 
 Developed as part of a Frontend Internship technical assessment.
+
