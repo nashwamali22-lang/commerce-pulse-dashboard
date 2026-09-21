@@ -21,18 +21,28 @@ import { db } from './config';
 
 const PRODUCTS_COLLECTION = 'products';
 
-interface FirestoreProduct {
+type FirestoreProduct = {
   name: string;
   description: string;
   imageUrl: string;
-  productUrl: string;
-  category: string;
+
   price: number;
+
   totalQuantity: number;
   soldQuantity: number;
-  profitPercentage: number;
+
+  categoryId: string;
+
+  profitPercentage?: number;
+
   createdAt?: Timestamp;
   updatedAt?: Timestamp;
+};
+
+function timestampToISOString(timestamp?: Timestamp): string {
+  return timestamp
+    ? timestamp.toDate().toISOString()
+    : new Date().toISOString();
 }
 
 export async function getProducts(): Promise<Product[]> {
@@ -48,35 +58,54 @@ export async function getProducts(): Promise<Product[]> {
 
     return {
       id: productDoc.id,
-      name: data.name,
-      description: data.description,
-      imageUrl: data.imageUrl,
-      productUrl: data.productUrl,
-      category: data.category,
-      price: data.price,
-      totalQuantity: data.totalQuantity,
-      soldQuantity: data.soldQuantity,
-      profitPercentage: data.profitPercentage,
-      createdAt: data.createdAt?.toDate() ?? new Date(),
-      updatedAt: data.updatedAt?.toDate() ?? new Date(),
+
+      name: data.name ?? '',
+      description: data.description ?? '',
+      imageUrl: data.imageUrl ?? '',
+
+      price: Number(data.price ?? 0),
+
+      totalQuantity: Number(data.totalQuantity ?? 0),
+
+      soldQuantity: Number(data.soldQuantity ?? 0),
+
+      categoryId: data.categoryId ?? '',
+
+      profitPercentage: Number(data.profitPercentage ?? 0),
+
+      createdAt: timestampToISOString(data.createdAt),
+
+      updatedAt: timestampToISOString(data.updatedAt),
     };
   });
 }
 
 export async function addProduct(product: CreateProductInput): Promise<string> {
-  const document = await addDoc(collection(db, PRODUCTS_COLLECTION), {
+  if (product.soldQuantity > product.totalQuantity) {
+    throw new Error('Sold quantity cannot exceed total quantity.');
+  }
+
+  const result = await addDoc(collection(db, PRODUCTS_COLLECTION), {
     ...product,
     createdAt: serverTimestamp(),
     updatedAt: serverTimestamp(),
   });
 
-  return document.id;
+  return result.id;
 }
 
 export async function updateProduct(
   productId: string,
   product: UpdateProductInput,
 ): Promise<void> {
+  if (
+    product.totalQuantity !== undefined &&
+    product.soldQuantity !== undefined &&
+    product.soldQuantity > product.totalQuantity
+  ) {
+    throw new Error('Sold quantity cannot exceed total quantity.');
+  }
+
   await updateDoc(doc(db, PRODUCTS_COLLECTION, productId), {
     ...product,
     updatedAt: serverTimestamp(),

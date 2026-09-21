@@ -1,27 +1,40 @@
 export interface Product {
   id: string;
+
   name: string;
   description: string;
   imageUrl: string;
-  productUrl: string;
-  category: string;
+
   price: number;
+
   totalQuantity: number;
   soldQuantity: number;
+
+  categoryId: string;
+
+  /*
+   * We keep this because the current analytics/dashboard
+   * already uses profit calculations.
+   * It can remain 0 until we expose it in the UI.
+   */
   profitPercentage: number;
-  createdAt: Date;
-  updatedAt: Date;
+
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface CreateProductInput {
   name: string;
   description: string;
   imageUrl: string;
-  productUrl: string;
-  category: string;
+
   price: number;
+
   totalQuantity: number;
   soldQuantity: number;
+
+  categoryId: string;
+
   profitPercentage: number;
 }
 

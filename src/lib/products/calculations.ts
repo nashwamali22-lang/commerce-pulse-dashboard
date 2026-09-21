@@ -1,21 +1,25 @@
 import type { Product } from '@/features/products/types';
 
-export function getAvailableQuantity(product: Product): number {
+export function getAvailableQuantity(
+  product: Pick<Product, 'totalQuantity' | 'soldQuantity'>,
+): number {
   return Math.max(product.totalQuantity - product.soldQuantity, 0);
 }
 
-export function getProfitPerUnit(product: Product): number {
-  return product.price * (product.profitPercentage / 100);
-}
-
-export function getProductRevenue(product: Product): number {
+export function getProductRevenue(
+  product: Pick<Product, 'price' | 'soldQuantity'>,
+): number {
   return product.price * product.soldQuantity;
 }
 
-export function getProductProfit(product: Product): number {
-  return getProfitPerUnit(product) * product.soldQuantity;
+export function getProfitPerUnit(
+  product: Pick<Product, 'price' | 'profitPercentage'>,
+): number {
+  return product.price * (product.profitPercentage / 100);
 }
 
-export function getInventoryValue(product: Product): number {
-  return product.price * getAvailableQuantity(product);
+export function getProductProfit(
+  product: Pick<Product, 'price' | 'soldQuantity' | 'profitPercentage'>,
+): number {
+  return getProfitPerUnit(product) * product.soldQuantity;
 }
