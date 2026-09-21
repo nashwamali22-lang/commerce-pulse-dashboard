@@ -1,8 +1,8 @@
-'use client';
+﻿'use client';
 
 import { X } from 'lucide-react';
 
-import { FormEvent, useEffect, useState } from 'react';
+import { useState, type FormEvent } from 'react';
 
 import type { Category } from '@/features/categories/types';
 
@@ -49,57 +49,70 @@ const EMPTY_FORM: FormState = {
   profitPercentage: '20',
 };
 
-export function ProductFormModal({
-  open,
+function getInitialForm(
+  product: Product | null | undefined,
+  categories: Category[]
+): FormState {
+  if (!product) {
+    return {
+      ...EMPTY_FORM,
+      categoryId: categories[0]?.id ?? '',
+    };
+  }
+
+  return {
+    name: product.name,
+    description: product.description,
+    imageUrl: product.imageUrl,
+    price: String(product.price),
+    totalQuantity: String(product.totalQuantity),
+    soldQuantity: String(product.soldQuantity),
+    categoryId: product.categoryId,
+    profitPercentage: String(product.profitPercentage),
+  };
+}
+export function ProductFormModal(
+  props: ProductFormModalProps
+) {
+  const {
+    open,
+    product,
+    categories,
+  } = props;
+
+  if (!open) {
+    return null;
+  }
+
+  const formKey =
+    product?.id ??
+    `new-${categories[0]?.id ?? 'no-category'}`;
+
+  return (
+    <ProductFormModalContent
+      key={formKey}
+      {...props}
+    />
+  );
+}
+
+function ProductFormModalContent({
   product,
   categories,
   loading,
   onClose,
   onSubmit,
 }: ProductFormModalProps) {
-  const [form, setForm] = useState<FormState>(EMPTY_FORM);
+  const [form, setForm] =
+    useState<FormState>(() =>
+      getInitialForm(
+        product,
+        categories
+      )
+    );
 
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (!open) {
-      return;
-    }
-
-    if (!product) {
-      setForm({
-        ...EMPTY_FORM,
-
-        categoryId: categories[0]?.id ?? '',
-      });
-
-      setError(null);
-
-      return;
-    }
-
-    setForm({
-      name: product.name,
-      description: product.description,
-      imageUrl: product.imageUrl,
-
-      price: String(product.price),
-
-      totalQuantity: String(product.totalQuantity),
-
-      soldQuantity: String(product.soldQuantity),
-
-      categoryId: product.categoryId,
-
-      profitPercentage: String(product.profitPercentage),
-    });
-
-    setError(null);
-  }, [open, product, categories]);
-
-  if (!open) {
-    return null;
-  }
+  const [error, setError] =
+    useState<string | null>(null);
 
   function updateField(field: keyof FormState, value: string) {
     setForm((current) => ({
@@ -394,3 +407,5 @@ function Field({
 
 const inputClass =
   'h-11 w-full rounded-xl border border-white/[0.07] bg-[#07111f] px-4 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-violet-500/60';
+
+
