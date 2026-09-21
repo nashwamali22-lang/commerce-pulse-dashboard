@@ -1,5 +1,6 @@
 import {
   browserLocalPersistence,
+  createUserWithEmailAndPassword,
   setPersistence,
   signInWithEmailAndPassword,
   signOut,
@@ -12,9 +13,36 @@ export async function loginWithEmail(
   email: string,
   password: string,
 ): Promise<User> {
-  await setPersistence(auth, browserLocalPersistence);
+  await setPersistence(
+    auth,
+    browserLocalPersistence,
+  );
 
-  const credential = await signInWithEmailAndPassword(auth, email, password);
+  const credential =
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password,
+    );
+
+  return credential.user;
+}
+
+export async function registerWithEmail(
+  email: string,
+  password: string,
+): Promise<User> {
+  await setPersistence(
+    auth,
+    browserLocalPersistence,
+  );
+
+  const credential =
+    await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password,
+    );
 
   return credential.user;
 }
