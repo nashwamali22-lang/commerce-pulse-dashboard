@@ -1,0 +1,59 @@
+<svg
+  width="160"
+  height="160"
+  viewBox="0 0 160 160"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <rect
+    width="160"
+    height="160"
+    rx="28"
+    fill="#F5F3FF"
+  />
+
+  <rect
+    x="42"
+    y="51"
+    width="76"
+    height="65"
+    rx="16"
+    fill="#EDE9FE"
+  />
+
+  <path
+    d="M57 67L80 54L103 67V94L80 107L57 94V67Z"
+    fill="#8B5CF6"
+  />
+
+  <path
+    d="M57 67L80 80L103 67"
+    stroke="#DDD6FE"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <path
+    d="M80 80V107"
+    stroke="#DDD6FE"
+    stroke-width="4"
+    stroke-linecap="round"
+  />
+
+  <circle
+    cx="119"
+    cy="42"
+    r="10"
+    fill="#38BDF8"
+    fill-opacity="0.22"
+  />
+
+  <circle
+    cx="38"
+    cy="118"
+    r="14"
+    fill="#8B5CF6"
+    fill-opacity="0.12"
+  />
+</svg>
