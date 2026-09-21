@@ -1,4 +1,4 @@
-export type ProductSeed = {
+﻿export type ProductSeed = {
   name: string;
   description: string;
   imageUrl: string;
@@ -26,7 +26,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'Flagship smartphone with premium performance and an advanced camera system.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=700&h=700&q=85',
     price: 1099,
     totalQuantity: 80,
     soldQuantity: 52,
@@ -38,7 +38,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'Balanced smartphone with excellent performance for everyday use.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&h=700&q=85',
     price: 799,
     totalQuantity: 120,
     soldQuantity: 84,
@@ -50,7 +50,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'Compact smartphone with a bright display and dependable battery life.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=700&h=700&q=85',
     price: 599,
     totalQuantity: 100,
     soldQuantity: 67,
@@ -62,7 +62,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'Affordable smartphone designed for daily communication and entertainment.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=700&h=700&q=85',
     price: 449,
     totalQuantity: 150,
     soldQuantity: 116,
@@ -74,7 +74,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'Premium large-screen smartphone for photography and productivity.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=700&h=700&q=85',
     price: 1299,
     totalQuantity: 65,
     soldQuantity: 43,
@@ -86,7 +86,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'Large smartphone with high-end display and long-lasting battery.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?auto=format&fit=crop&w=700&h=700&q=85',
     price: 899,
     totalQuantity: 90,
     soldQuantity: 79,
@@ -98,7 +98,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'Mid-range smartphone with smooth performance and a modern design.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=700&h=700&q=85',
     price: 649,
     totalQuantity: 110,
     soldQuantity: 73,
@@ -110,7 +110,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'High-end smartphone built for photography, gaming and productivity.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1585060544812-6b45742d762f?auto=format&fit=crop&w=700&h=700&q=85',
     price: 1199,
     totalQuantity: 70,
     soldQuantity: 61,
@@ -127,7 +127,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'Professional laptop for software development and creative workflows.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&h=700&q=85',
     price: 1499,
     totalQuantity: 60,
     soldQuantity: 34,
@@ -139,7 +139,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'Lightweight laptop with long battery life for mobile professionals.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=700&h=700&q=85',
     price: 1099,
     totalQuantity: 85,
     soldQuantity: 58,
@@ -151,7 +151,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'High-performance gaming laptop with dedicated graphics.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=700&h=700&q=85',
     price: 1899,
     totalQuantity: 45,
     soldQuantity: 36,
@@ -163,7 +163,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'Reliable business laptop for office and remote work.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1484788984921-03950022c9ef?auto=format&fit=crop&w=700&h=700&q=85',
     price: 899,
     totalQuantity: 110,
     soldQuantity: 64,
@@ -175,7 +175,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'Performance laptop designed for video editing and content creation.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&w=700&h=700&q=85',
     price: 1699,
     totalQuantity: 50,
     soldQuantity: 21,
@@ -187,7 +187,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'Compact laptop for students, browsing and everyday productivity.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=700&h=700&q=85',
     price: 699,
     totalQuantity: 130,
     soldQuantity: 124,
@@ -199,7 +199,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'Business-focused laptop with enhanced multitasking performance.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?auto=format&fit=crop&w=700&h=700&q=85',
     price: 1199,
     totalQuantity: 75,
     soldQuantity: 48,
@@ -211,7 +211,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'Premium gaming laptop with high refresh-rate display and powerful graphics.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1593642532400-2682810df593?auto=format&fit=crop&w=700&h=700&q=85',
     price: 2199,
     totalQuantity: 35,
     soldQuantity: 27,
@@ -228,7 +228,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'Premium tablet with large display for productivity and entertainment.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=700&h=700&q=85',
     price: 899,
     totalQuantity: 75,
     soldQuantity: 49,
@@ -240,7 +240,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'Slim lightweight tablet for browsing, media and daily productivity.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1561154464-82e9adf32764?auto=format&fit=crop&w=700&h=700&q=85',
     price: 649,
     totalQuantity: 105,
     soldQuantity: 76,
@@ -252,7 +252,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'Portable compact tablet for reading and media consumption.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1589739900243-4b52cd9b104e?auto=format&fit=crop&w=700&h=700&q=85',
     price: 449,
     totalQuantity: 140,
     soldQuantity: 132,
@@ -264,7 +264,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'Creative tablet with stylus support and color-accurate display.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1560785496-3c9d27877182?auto=format&fit=crop&w=700&h=700&q=85',
     price: 1099,
     totalQuantity: 55,
     soldQuantity: 33,
@@ -276,7 +276,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'Large-screen tablet designed for presentations and multitasking.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?auto=format&fit=crop&w=700&h=700&q=85',
     price: 1199,
     totalQuantity: 40,
     soldQuantity: 40,
@@ -288,7 +288,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'Affordable tablet for students, families and casual use.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1557825835-70d97c4aa567?auto=format&fit=crop&w=700&h=700&q=85',
     price: 349,
     totalQuantity: 160,
     soldQuantity: 103,
@@ -300,7 +300,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'Versatile tablet with balanced performance for work and entertainment.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1537498425277-c283d32ef9db?auto=format&fit=crop&w=700&h=700&q=85',
     price: 749,
     totalQuantity: 95,
     soldQuantity: 62,
@@ -312,7 +312,7 @@ export const PRODUCT_SEED_DATA: ProductSeed[] = [
     description:
       'Portable entry-level tablet for browsing, learning and streaming.',
     imageUrl:
-      '/products/product-placeholder.svg',
+      'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=700&h=700&q=85',
     price: 299,
     totalQuantity: 180,
     soldQuantity: 171,
