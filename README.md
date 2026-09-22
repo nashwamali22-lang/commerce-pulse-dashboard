@@ -1,8 +1,8 @@
-﻿# StockPro â€” Commerce Pulse Dashboard
+﻿# StockPro — Commerce Pulse Dashboard
 
 A responsive product inventory and analytics dashboard built as part of a Frontend Internship technical assessment.
 
-The application provides Firebase authentication, product inventory management, advanced table operations, analytics visualizations, PDF/Excel exports, Redux Toolkit state management, and Docker support.
+The application provides Firebase authentication, product inventory management, advanced table operations, analytics visualizations, PDF/Excel exports, Redux Toolkit state management, responsive layouts, and Docker support.
 
 ---
 
@@ -11,10 +11,12 @@ The application provides Firebase authentication, product inventory management, 
 ### Authentication
 
 - Firebase Email/Password authentication
+- User registration with Create Account
 - Persistent authenticated sessions
 - Protected dashboard routes
 - Logout functionality
 - Authentication state synchronized with Redux Toolkit
+- Firebase authentication error handling
 
 ### Product Management
 
@@ -65,9 +67,9 @@ The products page includes:
 Stock states are calculated dynamically:
 
 ```text
-In Stock     â†’ Available quantity > 10
-Low Stock    â†’ Available quantity between 1 and 10
-Out of Stock â†’ Available quantity = 0
+In Stock     → Available quantity > 10
+Low Stock    → Available quantity between 1 and 10
+Out of Stock → Available quantity = 0
 ```
 
 Filters can be combined together.
@@ -80,7 +82,7 @@ Stock = Low Stock
 Search = Pro
 ```
 
-will display only products matching all selected conditions.
+This displays only products matching all selected conditions.
 
 ---
 
@@ -115,19 +117,19 @@ The overview dashboard uses live Firestore product data to calculate:
 ### Revenue Calculation
 
 ```text
-Revenue = Product Price Ã— Sold Quantity
+Revenue = Product Price × Sold Quantity
 ```
 
 ### Profit Per Unit
 
 ```text
-Profit Per Unit = Product Price Ã— Profit Percentage / 100
+Profit Per Unit = Product Price × Profit Percentage / 100
 ```
 
 ### Total Product Profit
 
 ```text
-Product Profit = Profit Per Unit Ã— Sold Quantity
+Product Profit = Profit Per Unit × Sold Quantity
 ```
 
 The dashboard includes:
@@ -197,30 +199,30 @@ Charts are implemented with Recharts.
 
 ```text
 src/
-â”œâ”€â”€ app/
-â”‚   â”œâ”€â”€ (dashboard)/
-â”‚   â”‚   â”œâ”€â”€ dashboard/
-â”‚   â”‚   â”œâ”€â”€ products/
-â”‚   â”‚   â””â”€â”€ layout.tsx
-â”‚   â”œâ”€â”€ login/
-â”‚   â””â”€â”€ layout.tsx
-â”‚
-â”œâ”€â”€ components/
-â”‚   â”œâ”€â”€ auth/
-â”‚   â”œâ”€â”€ dashboard/
-â”‚   â””â”€â”€ products/
-â”‚
-â”œâ”€â”€ features/
-â”‚   â”œâ”€â”€ auth/
-â”‚   â”œâ”€â”€ categories/
-â”‚   â””â”€â”€ products/
-â”‚
-â”œâ”€â”€ lib/
-â”‚   â”œâ”€â”€ exports/
-â”‚   â”œâ”€â”€ firebase/
-â”‚   â””â”€â”€ products/
-â”‚
-â””â”€â”€ store/
+├── app/
+│   ├── (dashboard)/
+│   │   ├── dashboard/
+│   │   ├── products/
+│   │   └── layout.tsx
+│   ├── login/
+│   └── layout.tsx
+│
+├── components/
+│   ├── auth/
+│   ├── dashboard/
+│   └── products/
+│
+├── features/
+│   ├── auth/
+│   ├── categories/
+│   └── products/
+│
+├── lib/
+│   ├── exports/
+│   ├── firebase/
+│   └── products/
+│
+└── store/
 ```
 
 The application follows a feature-oriented structure to keep UI, Firebase services, Redux logic, selectors, and business calculations separated.
@@ -275,7 +277,7 @@ totalQuantity - soldQuantity
 
 ## Firebase Setup
 
-Create a Firebase project and enable:
+Create a Firebase project and enable the following services.
 
 ### Authentication
 
@@ -283,24 +285,25 @@ Enable:
 
 ```text
 Authentication
-â†’ Sign-in method
-â†’ Email/Password
+→ Sign-in method
+→ Email/Password
 ```
 
-Create at least one Firebase user for testing the login flow.
+The application supports both:
+
+- Sign In
+- Create Account
 
 ### Firestore
 
 Create a Cloud Firestore database.
 
-The application uses:
+The application uses the following collections:
 
 ```text
 products
 categories
 ```
-
-collections.
 
 For assessment/demo purposes, authenticated users require access to these collections.
 
@@ -378,7 +381,7 @@ git clone https://github.com/nashwamali22-lang/commerce-pulse-dashboard.git
 Enter the project:
 
 ```bash
-cd product-dashboard
+cd commerce-pulse-dashboard
 ```
 
 Install dependencies:
@@ -399,11 +402,13 @@ Add your Firebase configuration and start development mode:
 npm run dev
 ```
 
-Open:
+By default, Next.js will run on:
 
 ```text
 http://localhost:3000
 ```
+
+If port `3000` is already in use, Next.js may automatically use another port such as `3001`.
 
 ---
 
@@ -458,7 +463,7 @@ npm run build
 The project uses:
 
 ```ts
-output: 'standalone'
+output: 'standalone';
 ```
 
 in `next.config.ts` to support an optimized Docker runtime.
@@ -497,7 +502,7 @@ docker compose --env-file .env.local up -d
 docker ps
 ```
 
-The application should be available at:
+The Dockerized application should be available at:
 
 ```text
 http://localhost:3000
@@ -517,9 +522,9 @@ The Dockerfile uses a multi-stage build:
 
 ```text
 Dependencies
-    â†“
+    ↓
 Next.js Build
-    â†“
+    ↓
 Standalone Production Runtime
 ```
 
@@ -578,7 +583,7 @@ Manages:
 - Category loading state
 - Errors
 
-Dashboard metrics are calculated with memoized Redux selectors.
+Dashboard metrics are calculated using memoized Redux selectors.
 
 ---
 
@@ -598,12 +603,15 @@ The base Next.js application was configured with:
 
 ### 2. Authentication
 
-Firebase Email/Password authentication was added with:
+Firebase Email/Password authentication was implemented with:
 
+- Sign In
+- Create Account
 - Redux state synchronization
 - Persistent authentication
 - Protected dashboard routes
 - Login and logout flows
+- Authentication error handling
 
 ### 3. Product Architecture
 
@@ -619,7 +627,8 @@ The product domain was implemented using:
 
 The product interface was extended with:
 
-- CRUD
+- CRUD operations
+- Product images
 - Search
 - Category filtering
 - Stock filtering
@@ -636,7 +645,7 @@ Filtered and sorted product data can be exported as:
 
 ### 6. Analytics
 
-The overview dashboard calculates all metrics directly from current Firestore product data instead of relying on static analytics values.
+The overview dashboard calculates metrics directly from current Firestore product data instead of relying on static analytics values.
 
 ### 7. Docker
 
@@ -651,10 +660,13 @@ Development followed a Git Flow-inspired branching strategy.
 Main development branches include:
 
 ```text
+main
 develop
 feature/project-setup
 feature/authentication
 feature/products-table
+feature/user-registration
+fix/responsive-navigation-final-qa
 ```
 
 Example commit history:
@@ -667,11 +679,14 @@ feat: complete Firebase authentication flow
 feat: add product data architecture and Redux state
 feat: complete product management table and data exports
 feat: add analytics overview dashboard
-chore: update application metadata
 chore: dockerize dashboard application
+fix: improve responsive navigation and final code quality
+refactor: remove duplicate product summary cards
+feat: add user registration and product images
+release: add registration and product image updates
 ```
 
-Feature branches were merged into `develop` using explicit merge commits.
+Features were developed on dedicated branches and integrated into `develop` before the final release was synchronized with `main`.
 
 ---
 
@@ -684,82 +699,99 @@ The interface supports:
 - Tablet
 - Mobile
 
-The product table switches to a more mobile-friendly presentation on smaller screens.
+On larger screens, the application uses a persistent sidebar.
 
-Dashboard charts and KPI cards also adapt to available viewport width.
+On smaller screens, navigation switches to a mobile drawer with a hamburger menu.
+
+The product table also switches to a more mobile-friendly layout when required.
+
+Dashboard charts and KPI cards adapt to the available viewport width.
 
 ---
 
 ## Security Notes
 
-- Firebase credentials are loaded through environment variables.
+- Firebase configuration is loaded through environment variables.
 - `.env.local` is ignored by Git.
-- `.env.example` contains only empty placeholders.
+- `.env.example` contains only placeholders.
 - Passwords are handled by Firebase Authentication and are not stored in Firestore.
 - Protected routes require an authenticated Firebase session.
+- Application secrets are not committed to the repository.
 
 ---
 
 ## Demo Checklist
 
-The recorded project demonstration should include:
+The recorded project demonstration includes:
 
-1. Login with Firebase Authentication
-2. Overview dashboard
-3. Analytics charts
-4. Product listing
-5. Search
-6. Category filtering
-7. Stock filtering
-8. Sorting
-9. Pagination
-10. Add product
-11. Edit product
-12. Delete product
-13. PDF export
-14. Excel export
-15. Responsive layout
-16. Logout
-17. Docker container running with `docker ps`
-18. Application running from Docker on `localhost:3000`
+1. Firebase Authentication
+2. Sign In
+3. Create Account
+4. Protected routes
+5. Overview dashboard
+6. Analytics charts
+7. Product listing
+8. Search
+9. Category filtering
+10. Stock filtering
+11. Sorting
+12. Pagination
+13. Add product
+14. Edit product
+15. Delete product
+16. PDF export
+17. Excel export
+18. Responsive layout
+19. Logout
+20. Docker container running with `docker ps`
+21. Application running from Docker on `localhost:3000`
 
 ---
 
 ## Demo Video
 
-Demo video:
+A complete walkthrough of the StockPro Dashboard, including Firebase Authentication, dashboard analytics, dynamic product table operations, filtering, sorting, pagination, CRUD operations, PDF/Excel export, responsive design, and Docker.
 
-```text
-Add demo video URL here before submission.
-```
+[Watch the Demo Video](https://drive.google.com/file/d/1UrqBXjU92GrJ0QINkJx_LoUN5tpHF_L6/view?usp=drivesdk)
 
 ---
 
 ## Assessment Requirements
 
-| Requirement | Implementation |
-|---|---|
-| React | âœ… |
-| Next.js | âœ… |
-| TypeScript | âœ… |
-| Tailwind CSS | âœ… |
-| Redux Toolkit | âœ… |
-| Authentication | âœ… Firebase Authentication |
-| Dynamic Data Table | âœ… |
-| Sorting | âœ… |
-| Filtering | âœ… |
-| Pagination | âœ… |
-| Charts | âœ… Recharts |
-| Mobile Responsive | âœ… |
-| PDF Export | âœ… |
-| Excel Export | âœ… |
-| Docker | âœ… |
-| Git Flow | âœ… |
-| README | âœ… |
+| Requirement        | Implementation             |
+| ------------------ | -------------------------- |
+| React              | ✅                         |
+| Next.js            | ✅                         |
+| TypeScript         | ✅                         |
+| Tailwind CSS       | ✅                         |
+| Redux Toolkit      | ✅                         |
+| Authentication     | ✅ Firebase Authentication |
+| User Registration  | ✅ Firebase Authentication |
+| Dynamic Data Table | ✅ TanStack Table          |
+| Sorting            | ✅                         |
+| Filtering          | ✅                         |
+| Pagination         | ✅                         |
+| Charts             | ✅ Recharts                |
+| Mobile Responsive  | ✅                         |
+| PDF Export         | ✅ jsPDF                   |
+| Excel Export       | ✅ XLSX                    |
+| Docker             | ✅                         |
+| Docker Compose     | ✅                         |
+| Git Flow           | ✅                         |
+| Firestore          | ✅                         |
+| README             | ✅                         |
+| Demo Video         | ✅                         |
+
+---
+
+## Repository
+
+GitHub Repository:
+
+https://github.com/nashwamali22-lang/commerce-pulse-dashboard
 
 ---
 
 ## Author
 
 Developed as part of a Frontend Internship technical assessment.
-
